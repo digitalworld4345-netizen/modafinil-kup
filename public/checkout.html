@@ -1,0 +1,107 @@
+
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finalizacja zakupu | Modafinil-kup</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/logo.svg">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="logo" href="/index.html"><img src="/logo.svg" alt="Logo Modafinil-kup" width="36" height="36"><strong>Modafinil-kup</strong></a>
+      <nav class="nav">
+        <a href="/index.html">Sklep</a>
+        <a href="/admin.html" title="Panel zamówień">Panel</a>
+      </nav>
+      <div id="miniCart" class="kicker"></div>
+    </header>
+
+    <div class="card">
+      <h1>Finalizacja zakupu</h1>
+      <div id="orderSummary" class="section"></div>
+
+      <form id="checkoutForm" class="section">
+        <div class="row">
+          <div>
+            <label>Imię i nazwisko</label>
+            <input class="input" name="name" required>
+          </div>
+          <div>
+            <label>Telefon</label>
+            <input class="input" name="phone" required>
+          </div>
+        </div>
+        <label>Adres dostawy</label>
+        <input class="input" name="address" required>
+
+        <div class="section">
+          <div class="small">Sposób płatności</div>
+          <div class="card" style="padding:12px;margin-top:8px;">
+            <strong>Płatność przy odbiorze (COD)</strong><br>
+            Opłata za wysyłkę: 44 zł (dodana do koszyka)
+          </div>
+        </div>
+
+        <button class="btn" type="submit">Potwierdź zamówienie</button>
+      </form>
+    </div>
+
+    <footer class="footer">© Modafinil-kup. Wysyłka na terenie Polski. Dyskretne opakowanie.</footer>
+  </div>
+<script src="/app.js"></script>
+<script>
+function renderSummary(){
+  const cart = JSON.parse(localStorage.getItem("cart")||"[]");
+  const root = document.getElementById("orderSummary");
+  if(!cart.length){ root.innerHTML = "<p>Koszyk jest pusty.</p>"; return; }
+  let rows = cart.map(i=>{
+    const p = PRODUCTS[i.productId];
+    return `<tr><td>${p.name}</td><td>${i.qty} tab.</td><td>${i.count}</td><td>${i.unitPrice} zł</td><td>${i.unitPrice*i.count} zł</td></tr>`;
+  }).join("");
+  const totals = (function(){
+    const subtotal = cart.reduce((s,i)=>s+i.unitPrice*i.count,0);
+    return {subtotal, shipping: ${44}, total: subtotal + ${44}};
+  })();
+  root.innerHTML = `
+    <table class="table">
+      <thead><tr><th>Produkt</th><th>Wariant</th><th>Ilość</th><th>Cena jedn.</th><th>Suma</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="section">
+      <div class="total"><span>Podsuma</span><span>${totals.subtotal} zł</span></div>
+      <div class="total"><span>Wysyłka (COD)</span><span>${totals.shipping} zł</span></div>
+      <div class="total"><span>Razem</span><span>${totals.total} zł</span></div>
+    </div>
+  `;
+}
+renderSummary();
+
+document.getElementById("checkoutForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const cart = JSON.parse(localStorage.getItem("cart")||"[]");
+  if(!cart.length){ alert("Koszyk jest pusty."); return; }
+  const form = new FormData(e.target);
+  const order = {
+    name: form.get("name"),
+    phone: form.get("phone"),
+    address: form.get("address"),
+    cart,
+    shippingFee: ${44},
+    payment: "COD"
+  };
+  try{
+    const res = await fetch("/api/orders", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(order)});
+    if(!res.ok) throw new Error("Błąd serwera");
+    localStorage.removeItem("cart");
+    alert("Dziękujemy! Zamówienie zostało złożone. Potwierdzenie wysłano na e-mail.");
+    location.href = "/index.html";
+  }catch(err){
+    alert("Nie udało się złożyć zamówienia. Spróbuj ponownie.");
+  }
+});
+</script>
+</body>
+</html>

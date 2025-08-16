@@ -1,0 +1,14 @@
+
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modafinil-kup">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="36" rx="10" fill="url(#g)"/>
+  <rect x="10" y="14" width="44" height="10" rx="5" fill="#fff" opacity=".9"/>
+  <circle cx="16" cy="40" r="6" fill="#fff"/>
+  <circle cx="32" cy="40" r="6" fill="#e2e8f0"/>
+  <circle cx="48" cy="40" r="6" fill="#fff"/>
+</svg>
