@@ -7,18 +7,284 @@
   <meta name="description" content="Skuteczne leki na czujność i koncentrację. Szybka, dyskretna dostawa w całej Polsce." />
   <title>Modafinil-kup.pl – Kup bez recepty i szybko | Jakość polska</title>
 
-  <!-- Load React, ReactDOM, Babel -->
+  <!-- Load React & ReactDOM -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    body, html {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body, html {
       background: #000;
       color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 260px;
+      height: 100%;
+      background: linear-gradient(180deg, #0a2a1b, #000);
+      color: #ffeb3b;
+      padding: 24px;
+      border-right: 1px solid #0077ff;
+      z-index: 50;
+    }
+
+    .sidebar h1 {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, #0077ff, #9c27b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar ul li {
+      margin: 16px 0;
+    }
+
+    .sidebar ul li button {
+      background: none;
+      border: none;
+      color: #ffeb3b;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: opacity 0.3s;
+    }
+
+    .sidebar ul li button:hover {
+      opacity: 0.8;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      left: 260px;
+      right: 0;
+      top: 0;
+      height: 70px;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #0077ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      z-index: 40;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      background: linear-gradient(90deg, #0077ff, #9c27b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header .cart {
+      color: #0077ff;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .header .cart .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #f44336;
+      color: white;
+      font-size: 0.75rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-left: 260px;
+      height: 100vh;
+      background: url('https://i.imgur.com/8nKoPqT.png') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      padding: 32px;
+    }
+
+    .hero h2 {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      color: #0077ff;
+      text-shadow: 0 0 10px rgba(0, 119, 255, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
+    .hero button {
+      background: linear-gradient(90deg, #0077ff, #9c27b0);
+      color: white;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.3rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Products Grid */
+    .products {
+      margin-left: 260px;
+      padding: 100px 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 1600px;
+      margin-top: 40px;
+    }
+
+    .product-card {
+      background: #0a1a2a;
+      border: 1px solid #0077ff;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: #9c27b0;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-card .info {
+      padding: 20px;
+    }
+
+    .product-card h3 {
+      color: #0077ff;
+      font-size: 1.4rem;
+    }
+
+    .product-card p {
+      color: #aaa;
+      margin: 6px 0;
+    }
+
+    .product-card .price {
+      color: #0f9d58;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .product-card button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #0077ff, #9c27b0);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Cart Dropdown */
+    .cart-dropdown {
+      position: absolute;
+      right: 24px;
+      top: 80px;
+      width: 320px;
+      background: #0a1a2a;
+      border: 1px solid #0077ff;
+      border-radius: 12px;
+      color: white;
+      padding: 16px;
+      z-index: 60;
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .cart-dropdown.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-dropdown h3 {
+      margin-bottom: 12px;
+      color: #0077ff;
+    }
+
+    .cart-dropdown .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
+
+    .cart-dropdown .total {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #0f9d58;
+    }
+
+    /* Footer */
+    footer {
+      margin-left: 260px;
+      padding: 40px 24px;
+      text-align: center;
+      color: #aaa;
+      border-top: 1px solid #333;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -48,6 +314,7 @@
 
       const [isCartOpen, setIsCartOpen] = useState(false);
 
+      // === PRODUCT DATA WITH YOUR EXACT SEO & PRICING ===
       const products = [
         {
           id: 1,
@@ -56,7 +323,8 @@
           image: "/images/artvigil-150mg.webp",
           slug: "artvigil-150mg-w-polsce-kup-online",
           metaTitle: "Artvigil 150mg w Polsce – Kup Online | Modafinil-kup",
-          metaDesc: "Artvigil – sprawdź dawkowanie, ceny i opinie. Bezpieczny zakup online w Polsce. Skuteczny wspomagacz koncentracji i energii",
+          metaDesc:
+            "Artvigil – sprawdź dawkowanie, ceny i opinie. Bezpieczny zakup online w Polsce. Skuteczny wspomagacz koncentracji i energii",
           anchor: "Artvigil 150mg w Polsce – Kup Online",
           dosage: "150 mg",
           manufacturer: "Sun Pharma",
@@ -68,7 +336,7 @@
             { count: 30, price: 252 },
             { count: 50, price: 400 },
             { count: 100, price: 600 },
-            { count: 200, price: 800 }
+            { count: 200, price: 800 },
           ],
         },
         {
@@ -78,7 +346,8 @@
           image: "/images/waklert-150mg.webp",
           slug: "waklert-150-mg-skuteczny-modafinil-w-polsce",
           metaTitle: "Waklert 150 mg – Skuteczny Modafinil w Polsce | Modafinil-kup",
-          metaDesc: "Waklert 150 mg to wysokiej jakości modafinil. Szybka dostawa do Polski, gwarantowana skuteczność. Zamów teraz",
+          metaDesc:
+            "Waklert 150 mg to wysokiej jakości modafinil. Szybka dostawa do Polski, gwarantowana skuteczność. Zamów teraz",
           anchor: "Waklert 150 mg – Skuteczny Modafinil w Polsce",
           dosage: "150 mg",
           manufacturer: "Sun Pharma",
@@ -90,7 +359,7 @@
             { count: 30, price: 342 },
             { count: 50, price: 450 },
             { count: 100, price: 700 },
-            { count: 200, price: 1000 }
+            { count: 200, price: 1000 },
           ],
         },
         {
@@ -100,7 +369,8 @@
           image: "/images/modalert-200mg.webp",
           slug: "modalert-200mg-dostepny-w-polsce",
           metaTitle: "Modalert 200mg 💊 | Dostępny w Polsce | Szybka wysyłka",
-          metaDesc: "Modalert 200mg – sprawdzony modafinil na czujność. Bezpieczna dostawa w Polsce, dyskiretne opakowanie. Zamów teraz i odbierz szybko!",
+          metaDesc:
+            "Modalert 200mg – sprawdzony modafinil na czujność. Bezpieczna dostawa w Polsce, dyskiretne opakowanie. Zamów teraz i odbierz szybko!",
           anchor: "Modalert 200mg 💊 | Dostępny w Polsce",
           dosage: "200 mg",
           manufacturer: "Sun Pharma",
@@ -112,7 +382,7 @@
             { count: 30, price: 192 },
             { count: 50, price: 300 },
             { count: 100, price: 500 },
-            { count: 200, price: 800 }
+            { count: 200, price: 800 },
           ],
         },
         {
@@ -122,7 +392,8 @@
           image: "/images/modvigil-200mg.webp",
           slug: "modvigil-200mg-szybka-dostawa-w-polsce",
           metaTitle: "Modvigil 200mg 💊 | Szybka Dostawa w Polsce ⚡",
-          metaDesc: "Modvigil 200mg w niskiej cenie z dostawą w Polsce. ⚡ Szybka wysyłka, dyskretne opakowanie. Sprawdź teraz!",
+          metaDesc:
+            "Modvigil 200mg w niskiej cenie z dostawą w Polsce. ⚡ Szybka wysyłka, dyskretne opakowanie. Sprawdź teraz!",
           anchor: "Modvigil 200mg 💊 | Szybka Dostawa w Polsce ⚡",
           dosage: "200 mg",
           manufacturer: "Vignatech",
@@ -134,15 +405,9 @@
             { count: 30, price: 192 },
             { count: 50, price: 300 },
             { count: 100, price: 400 },
-            { count: 200, price: 600 }
+            { count: 200, price: 600 },
           ],
-        }
-      ];
-
-      const polishCities = [
-        "Warszawa", "Kraków", "Wrocław", "Łódź", "Poznań", "Gdańsk", "Szczecin",
-        "Bydgoszcz", "Katowice", "Białystok", "Częstochowa", "Gliwice", "Kielce",
-        "Opole", "Rzeszów", "Sosnowiec", "Tarnów", "Toruń", "Zabrze", "Zamość", "Zielona Góra"
+        },
       ];
 
       const addToCart = (product, pack, quantity = 1) => {
@@ -162,14 +427,16 @@
       };
 
       const removeFromCart = (itemId) => {
-        setCart(cart.filter(item => item.id !== itemId));
+        setCart(cart.filter((item) => item.id !== itemId));
       };
 
       const updateQuantity = (itemId, newQuantity) => {
         if (newQuantity < 1) return;
-        setCart(cart.map(item =>
-          item.id === itemId ? { ...item, quantity: newQuantity } : item
-        ));
+        setCart(
+          cart.map((item) =>
+            item.id === itemId ? { ...item, quantity: newQuantity } : item
+          )
+        );
       };
 
       const handleCheckoutSubmit = async (e) => {
@@ -192,54 +459,39 @@
           setCart([]);
           setCurrentView("thankyou");
         } catch (err) {
-          alert("Błąd podczas składania zamówienia.");
+          alert("Błąd podczas składania zamówienia. Spróbuj ponownie.");
         }
       };
 
+      const polishCities = [
+        "Warszawa", "Kraków", "Wrocław", "Łódź", "Poznań", "Gdańsk", "Szczecin",
+        "Bydgoszcz", "Katowice", "Białystok", "Częstochowa", "Gliwice", "Kielce",
+        "Opole", "Rzeszów", "Sosnowiec", "Tarnów", "Toruń", "Zabrze", "Zamość", "Zielona Góra"
+      ];
+
+      // Sidebar Component
       const Sidebar = () => (
-        <div style={{
-          position: "fixed",
-          left: 0,
-          top: 0,
-          width: "250px",
-          height: "100%",
-          background: "linear-gradient(180deg, #0a2a1b, #000)",
-          color: "#ffeb3b",
-          padding: "20px",
-          borderRight: "1px solid #0077ff",
-          zIndex: 10,
-        }}>
-          <h1 style={{
-            fontSize: "1.5rem",
-            marginBottom: "20px",
-            background: "linear-gradient(90deg, #0077ff, #9c27b0)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent"
-          }}>
-            Modafinil-kup
-          </h1>
-          <ul style={{ listStyle: "none", marginTop: "20px" }}>
-            {products.map(product => {
-              const icon = product.name.includes("Modalert") ? "💊" :
-                           product.name.includes("Modvigil") ? "⚡" :
-                           product.name.includes("Waklert") ? "👤" : "🌶️";
+        <div className="sidebar">
+          <h1>Modafinil-kup</h1>
+          <h2 style={{ fontSize: "1.1rem", color: "#0077ff", marginBottom: "16px" }}>PRODUKTY</h2>
+          <ul>
+            {products.map((product) => {
+              const icon = product.name.includes("Modalert")
+                ? "💊"
+                : product.name.includes("Modvigil")
+                ? "⚡"
+                : product.name.includes("Waklert")
+                ? "👤"
+                : "🌶️";
+
               return (
-                <li key={product.id} style={{ margin: "15px 0" }}>
+                <li key={product.id}>
                   <button
                     onClick={() => {
                       setSelectedProduct(product);
                       setCurrentView("product");
                     }}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "#ffeb3b",
-                      fontSize: "1rem",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px"
-                    }}>
+                  >
                     {icon} {product.name.split(" ")[0]}
                   </button>
                 </li>
@@ -249,35 +501,21 @@
         </div>
       );
 
+      // Cart Dropdown
       const CartDropdown = () => (
-        <div style={{
-          position: "absolute",
-          right: "20px",
-          top: "70px",
-          width: "300px",
-          background: "#0a1a2a",
-          border: "1px solid #0077ff",
-          borderRadius: "10px",
-          color: "white",
-          padding: "15px",
-          zIndex: 10,
-          transform: isCartOpen ? "translateY(0)" : "translateY(-10px)",
-          opacity: isCartOpen ? 1 : 0,
-          pointerEvents: isCartOpen ? "all" : "none",
-          transition: "all 0.3s"
-        }}>
-          <h3 style={{ color: "#0077ff" }}>Twój koszyk</h3>
+        <div className={`cart-dropdown ${isCartOpen ? "show" : ""}`}>
+          <h3>Twój koszyk</h3>
           {cart.length === 0 ? (
             <p>Brak produktów</p>
           ) : (
             <div>
-              {cart.map(item => (
-                <div key={item.id} style={{ display: "flex", justifyContent: "space-between", margin: "10px 0" }}>
+              {cart.map((item) => (
+                <div key={item.id} className="item">
                   <span>{item.name} x{item.quantity}</span>
                   <span>{item.price * item.quantity} zł</span>
                 </div>
               ))}
-              <div style={{ borderTop: "1px solid #333", paddingTop: "10px", marginTop: "10px", fontWeight: "bold", color: "#0f9d58" }}>
+              <div className="total">
                 Razem: {cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + 44} zł
               </div>
             </div>
@@ -285,109 +523,62 @@
         </div>
       );
 
+      // Views
       const renderHome = () => (
-        <div style={{ marginLeft: "250px", minHeight: "100vh", background: "url('https://i.imgur.com/8nKoPqT.png') center/cover", color: "white", textAlign: "center", paddingTop: "200px" }}>
-          <div style={{ background: "rgba(0,0,0,0.7)", display: "inline-block", padding: "50px", borderRadius: "15px" }}>
-            <h1 style={{ fontSize: "3rem", color: "#0077ff" }}>Modafinil-kup.pl</h1>
-            <p style={{ fontSize: "1.5rem", margin: "20px 0" }}>Skuteczne leki na czujność i koncentrację</p>
-            <p>⚡ Szybka, dyskretna dostawa w całej Polsce</p>
-            <button
-              onClick={() => setCurrentView("products")}
-              style={{
-                background: "linear-gradient(90deg, #0077ff, #9c27b0)",
-                color: "white",
-                border: "none",
-                padding: "15px 30px",
-                fontSize: "1.2rem",
-                borderRadius: "50px",
-                cursor: "pointer",
-                marginTop: "20px"
-              }}>
-              Kup Teraz
-            </button>
-          </div>
-        </div>
-      );
-
-      const renderProduct = () => {
-        const product = selectedProduct;
-        return (
-          <div style={{ marginLeft: "250px", padding: "80px 20px" }}>
-            <button onClick={() => setCurrentView("home")} style={{ color: "#0077ff", marginBottom: "20px" }}>
-              &laquo; Wróć
-            </button>
-            <h1>{product?.name}</h1>
-            <p>Cena od: {product?.prices[0].price} zł</p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px", marginTop: "20px" }}>
-              {product?.prices.map(pack => (
-                <button key={pack.count} onClick={() => addToCart(product, pack)}>
-                  {pack.count} szt. – {pack.price} zł
-                </button>
-              ))}
+        <div>
+          <Sidebar />
+          <div className="hero">
+            <div className="hero-content">
+              <h2>Modafinil-kup.pl</h2>
+              <p>Skuteczne leki na czujność i koncentrację</p>
+              <p>⚡ Szybka, dyskretna dostawa w całej Polsce</p>
+              <button onClick={() => setCurrentView("products")}>Kup Teraz</button>
             </div>
           </div>
-        );
-      };
 
-      const renderCart = () => (
-        <div style={{ marginLeft: "250px", padding: "80px 20px" }}>
-          <h1>Twój Koszyk</h1>
-          {cart.map(item => (
-            <div key={item.id}>{item.name} x{item.quantity} – {item.price * item.quantity} zł</div>
-          ))}
-          <p><strong>Dostawa:</strong> 44 zł</p>
-          <p><strong>Łącznie:</strong> {cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + 44} zł</p>
-        </div>
-      );
+          <section className="products">
+            {products.map((product) => (
+              <div key={product.id} className="product-card">
+                <img
+                  src={product.image}
+                  alt={product.anchor}
+                  onError={(e) => {
+                    e.target.src = "https://placehold.co/300x200/0a1a2a/0077ff?text=Produkt";
+                  }}
+                />
+                <div className="info">
+                  <h3>{product.name}</h3>
+                  <p>{product.category}</p>
+                  <p className="price">od {product.prices[0].price} zł</p>
+                  <button
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setCurrentView("product");
+                    }}
+                  >
+                    Zobacz produkt
+                  </button>
+                </div>
+              </div>
+            ))}
+          </section>
 
-      const renderThankYou = () => (
-        <div style={{ marginLeft: "250px", padding: "80px 20px", textAlign: "center" }}>
-          <h1>Dziękujemy!</h1>
-          <p>Skontaktujemy się z Tobą wkrótce.</p>
+          <footer>
+            © 2025 Modafinil-kup.pl | Kontakt: admin@modafinil-kup.pl
+          </footer>
         </div>
       );
 
       return (
-        <div>
-          <Sidebar />
-          <header style={{
-            position: "fixed",
-            left: "250px",
-            right: 0,
-            top: 0,
-            height: "60px",
-            background: "rgba(0,0,0,0.9)",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 20px",
-            zIndex: 5,
-            borderBottom: "1px solid #0077ff"
-          }}>
-            <h1 style={{
-              background: "linear-gradient(90deg, #0077ff, #9c27b0)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              fontSize: "1.5rem"
-            }}>
-              Modafinil-kup.pl
-            </h1>
-            <div style={{ position: "relative" }}>
-              <button onClick={() => setCurrentView("cart")} style={{ color: "#0077ff" }}>
-                Koszyk {cart.length > 0 && <span style={{ background: "red", color: "white", borderRadius: "50%", width: "18px", height: "18px", display: "inline-flex", justifyContent: "center", alignItems: "center", fontSize: "0.8rem" }}>{cart.length}</span>}
-              </button>
-              <CartDropdown />
+        <div className="app">
+          {renderHome()}
+          <header className="header">
+            <h1>Modafinil-kup.pl</h1>
+            <div className="cart" onClick={() => setCurrentView("cart")}>
+              Koszyk {cart.length > 0 && <span className="badge">{cart.length}</span>}
             </div>
+            <CartDropdown />
           </header>
-
-          {currentView === "home" && renderHome()}
-          {currentView === "product" && renderProduct()}
-          {currentView === "cart" && renderCart()}
-          {currentView === "thankyou" && renderThankYou()}
-
-          <footer style={{ marginLeft: "250px", padding: "20px", textAlign: "center", borderTop: "1px solid #333", color: "#aaa" }}>
-            © 2025 Modafinil-kup.pl | Kontakt: admin@modafinil-kup.pl
-          </footer>
         </div>
       );
     };
